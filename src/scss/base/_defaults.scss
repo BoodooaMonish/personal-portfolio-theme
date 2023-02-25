@@ -1,0 +1,49 @@
+ul {
+  padding-left: 0;
+  list-style-type: none;
+  & > li {
+    list-style-type: none;
+  }
+}
+
+a {
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+}
+
+html {
+  color: #333;
+  background-color: #fff;
+  // visibility: hidden;
+  // opacity: 0;
+  scroll-behavior: smooth;
+}
+
+// Test Classes
+.ripple--testbox {
+  display: block;
+  width: 240px;
+  height: 160px;
+  background-color: transparent;
+  border: 1px solid black;
+}
+
+.test-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  &--row {
+    flex-direction: column;
+  }
+}
+
+.box {
+  background-color: brown;
+  height: 100px;
+}
+
+.is-hidden {
+  visibility: hidden;
+}
