@@ -1,0 +1,9 @@
+version: "1"
+services:
+  node_dev_env:
+    build: .
+    container_name: node_env
+    ports:
+      - 8080:3000
+    volumes:
+      - ./:/home/app
