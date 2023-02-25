@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 64"
+   version="1.1"
+   id="svg7"
+   sodipodi:docname="social_email.svg"
+   width="64"
+   height="64"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview9"
+     pagecolor="#f5f5f5"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="8.5416667"
+     inkscape:cx="19.141463"
+     inkscape:cy="33.014634"
+     inkscape:window-width="1920"
+     inkscape:window-height="1010"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg7"
+     showguides="true" />
+  <title
+     id="title2" />
+  <g
+     id="g308">
+    <path
+       style="fill:#2c6e49;fill-opacity:1;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="m 11.990659,26.380851 20.327488,15.280165 20.188725,-15.440282 0.121667,1.923505 -14.368701,10.238832 -1.053365,0.971529 -0.23934,0.220747 -5.639291,3.747318 -3.034808,-2.374136 -17.639288,-13.762928 0.0053,28.531103 15.735116,-15.395168 1.251127,1.271232 -16.437484,16.349683 43.260981,-0.703836 0.89506,-29.364962 -2.036074,-2.359492 z"
+       id="path902"
+       sodipodi:nodetypes="cccccccccccccccccc" />
+    <path
+       d="M 53,25 H 11 a 3,3 0 0 0 -3,3 v 28 a 3,3 0 0 0 3,3 h 42 a 3,3 0 0 0 3,-3 V 28 A 3,3 0 0 0 53,25 Z M 52.36,27 32,42.74 11.64,27 Z M 10,55.59 V 28.26 L 25.41,40.17 Z M 11.41,57 27,41.41 31.38,44.8 a 1,1 0 0 0 1.22,0 L 37,41.41 52.59,57 Z M 54,55.59 38.59,40.17 54,28.26 Z"
+       id="path4"
+       style="display:inline;fill:#0b1728;fill-opacity:1" />
+  </g>
+</svg>
