@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use "sass:math";
+
+/* Themify - Merge The Default Theme Component Map To A Themed One
+   ========================================================================== */
+
+@function themify-component-map-merge($default-component-style-map, $theme-component-style-map) {
+    $result: ();
+    @each $key, $value in $default-component-style-map {
+        @if map.has-key($theme-component-style-map, $key) {
+            $result: map.set($result, $key, map.get($theme-component-style-map, $key));
+        } @else {
+            $result: map.set($result, $key, null);
+        }
+    }
+    @return $result;
+}

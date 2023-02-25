@@ -1,0 +1,35 @@
+$dark: (
+  "button": (
+    "default-btn-padding": 0 16px 0 16px,
+    "default-btn-height": 48px,
+    "default-btn-border-radius": 4px,
+    "default-btn-icon-spacing": 8px,
+    "default-btn-color": #6c7179,
+    "default-btn-hover-color": #51565e,
+    "default-btn-focus-color": #363b43,
+    "default-btn-selected-color": #51565e,
+    "default-btn-disabled-color": #bdc2ca,
+    "default-btn-disabled-background": #f2f7ff,
+    "outlined-btn-padding": (
+      0 (1px - 16px) 0 (1px - 16px),
+    ),
+    "outlined-btn-border-width": 1px,
+    "outlined-btn-border-style": solid,
+    "outlined-btn-border-color": #6c7179,
+    "contained-btn-padding": (
+      0 16px 0 16px,
+    ),
+    "contained-btn-raised-shadow-transition": (
+      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+    ),
+    "contained-btn-icon-spacing": 8px,
+    "contained-btn-icon-spacing-negative": (
+      -1 * 4px,
+    ),
+    "contained-btn-background-color": #6c7179,
+    "contained-btn-color": #f2f7ff,
+    "contained-btn-hover-background": #878c94,
+    "contained-btn-focus-background": #bdc2ca,
+    "contained-btn-selected-background": #a2a7af,
+  ),
+);

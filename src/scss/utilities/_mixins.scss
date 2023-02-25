@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "./functions";
+
+@mixin themify-component($all-themes-maps, $map-name, $default-map) {
+  @each $name, $theme in $all-themes-maps {
+    @if map.has-key($theme, $map-name) {
+      $schema: functions.themify-component-map-merge(
+        $default-map,
+        map.get($theme, $map-name)
+      );
+      html[data-theme="#{$name}"] {
+        @content ($schema);
+      }
+    }
+  }
+}
