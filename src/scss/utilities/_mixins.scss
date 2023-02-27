@@ -14,3 +14,22 @@
     }
   }
 }
+
+
+/* Generate CSS Properties Using A Map Containing 'Key:Value' Pairs
+   ========================================================================== */
+
+/**
+ * SHOULD BE USED inside a css selector
+ * USAGE EXAMPLE:
+ *   - @include generate-map-properties($map-name);
+ */
+
+/// @access public
+/// @group helpers
+/// @param {map} - map containing a set of css properties with their values
+@mixin generate-map-properties($map) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
