@@ -15,3 +15,19 @@
     }
     @return $result;
 }
+
+/* Convert 'px' Value To 'rem' Value
+   ========================================================================== */
+
+/**
+ * SHOULD BE USED INLINE as a css value 
+ * USAGE EXAMPLE:
+ *   - width: helpers.px-to-rem(24px);
+ */
+
+/// @access public
+/// @group helpers
+/// @param {number} - value in px for rem conversion
+@function px-to-rem($pxValue) {
+  @return math.div($pxValue, 16px) * 1rem;
+}
