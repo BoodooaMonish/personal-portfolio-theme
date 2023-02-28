@@ -1,3 +1,27 @@
+@use "sass:map";
+@use "../utilities/typography";
+
+/* ==========================================================================
+   Font Face
+   ========================================================================== */
+
+/* nunito variable fonts */
+
+@font-face {
+  font-family: "Nunito";
+  font-weight: 100 900;
+  font-display: block;
+  src: 
+  // local("Nunito"),
+    url("./fonts/Nunito-VariableFont_wght.woff2") format("woff2 supports variations"),
+    url("./fonts/Nunito-VariableFont_wght.woff2") format("woff2-variations"),
+}
+
+
+/* ==========================================================================
+   Browser Defaults
+   ========================================================================== */
+
 ul {
   padding-left: 0;
   list-style-type: none;
@@ -18,6 +42,9 @@ html {
   // visibility: hidden;
   // opacity: 0;
   scroll-behavior: smooth;
+}
+body{
+  font-family: map.get(typography.$typography-family, 'Nunito');
 }
 
 // Test Classes
