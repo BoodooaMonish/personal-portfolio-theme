@@ -1,13 +1,54 @@
 @use "sass:map";
 @use "./functions";
+@use "./typography";
 
+/// GLOBAL MIXINS
+
+/// Generate CSS Properties Using A Map Containing 'Key:Value' Pairs
+/// 
+/// @access public
+/// @group global
+/// @param {map} - map containing a set of css properties with their values
+/// @example generate css properties:values from a map
+///    css-selector {
+///                   @include mixins.generate-map-properties($map-name);
+///                 }
+@mixin generate-map-properties($map) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+
+/// THEMIFY MIXINS
+
+/// Generate CSS Properties based on the theme-name
+/// Used inside the component's file
+/// 
+/// @access public
+/// @group themify
+/// @param {map} $all-thems-maps - the $themes file found in 'src/scss/_theme.scss'
+/// @param {string} $map-name - the name of component's default preset theme [needs to be similar across all themes files]
+/// @param {map} $default-map - the default map of the component's preset theme
+/// 
+/// @example add the mixin inside a component's file
+///   @include mixins.themify-component(theme.$themes, "button", $button) using ($schema) 
+///      {
+///         @include theme-button($schema);
+///      }
+/// 
 @mixin themify-component($all-themes-maps, $map-name, $default-map) {
+  /// Loop through each theme map
   @each $name, $theme in $all-themes-maps {
+    /// if the theme map contains the desired component-map-name
     @if map.has-key($theme, $map-name) {
+      /// merge the default and themed map together and make them
+      /// available as arguments inside the content blocks inside in the component file
       $schema: functions.themify-component-map-merge(
         $default-map,
         map.get($theme, $map-name)
       );
+      /// Note that html[data-theme=""] is used to swap themes
       html[data-theme="#{$name}"] {
         @content ($schema);
       }
@@ -15,21 +56,35 @@
   }
 }
 
+/// TYPOGRAPHY MIXINS
 
-/* Generate CSS Properties Using A Map Containing 'Key:Value' Pairs
-   ========================================================================== */
-
-/**
- * SHOULD BE USED inside a css selector
- * USAGE EXAMPLE:
- *   - @include generate-map-properties($map-name);
- */
-
+/// Generate a particular typographic properties using a preset font-style from a particular font-family
+/// 
 /// @access public
-/// @group helpers
-/// @param {map} - map containing a set of css properties with their values
-@mixin generate-map-properties($map) {
-  @each $key, $value in $map {
-    #{$key}: $value;
+/// @group typography
+/// @param {string} $font-family - the name of the font-family to use
+/// @param {string} $font-style - the name of the preset to use found inside the font family's presets
+/// 
+/// @example add typographic properties to a css declaration block
+///   .css-example {
+///                   @include mixins.create-typography-properties-only('Nunito', 'button');
+///                }
+/// 
+@mixin create-typography-properties-only($font-family, $font-style) {
+  /// add font-family value
+  font-family: map.get(typography.$typography-family, $font-family);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  /// check if the preset does not have the 'text-decoration' key
+  @if (not map.has-key(map.get(typography.$typography, $font-family, $font-style), "text-decoration")) {
+    text-decoration: inherit;
   }
+  /// check if the preset does not have the 'text-transform' key
+  @if (not map.has-key(map.get(typography.$typography, $font-family, $font-style), "text-transform")) {
+    text-transform: inherit;
+  }
+
+  /// generate css properties based on the preset map
+  @include generate-map-properties(map.get(typography.$typography, $font-family, $font-style));
 }

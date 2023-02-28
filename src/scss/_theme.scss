@@ -1,5 +1,23 @@
+/// This is the global theme file.
+/// All created theme files found in src/scss/themes are assigned here to be used by other partial scss
+/// component files.
+
 @use "./themes/dark";
 
+/// $themes is a map that contains all the themes to be used
+/// @access public
+/// @type map
+/// @group themify
+/// @require {variable} $theme-map-file found in any theme files in 'src/scss/themes/_*.scss
+/// @example add a theme to the project
+///     (
+///         'theme-name': theme-file.$theme-map
+///     )
+///     (
+///         'admin': admin.$admin,
+///     )
+/// 
 $themes : (
     "dark": dark.$dark,
+/// add a new theme here
 )

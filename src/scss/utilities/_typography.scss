@@ -1,10 +1,59 @@
+/// This is the typography file.
+/// It contains two maps:
+///   1. A map containing the font-family preset of a particular font
+///   2. A map containing maps of font-familys (key) which themeselves contains
+///      preset maps to be used across multiple components
+/// The preset maps are typically used across component by defining the font-family-name and font-family's preset map
+/// E.g. (Nunito, button)
+
 @use "sass:string";
 @use "./functions";
 
+/// $typography-family is a map that contains a series of font-family-name:font-family-preset key:value pairs
+/// 
+/// @type map
+/// @access public
+/// @group typography
+/// 
+/// @example add new font-family preset
+///   (
+///     "font-family-name": string.unquote("font-family-preset"),
+///   )
+/// 
+///   (
+///     "Roboto": string.unquote("Roboto, sans-serif"),
+///   )
+/// 
 $typography-family: (
   "Nunito": string.unquote("Nunito, sans-serif"),
 );
 
+/// $typography is map that contains a series of font-presets for each font-family of the project
+/// 
+/// @type map
+/// @access public
+/// @group typography
+/// 
+/// @example add a new preset map for a particular font-family
+///   "font-family-name": (
+///                         "preset-name": (
+///                                           font-size: *px,
+///                                           line-height: num,
+///                                           font-weight: num,
+///                                           letter-spacing: *px,
+///                                           * text-decoration: inherit,
+///                                           * text-transform: inherit,
+///                                        )
+///                       )
+///   "roboto": (
+///                         "h1": (
+///                                           font-size: 64px,
+///                                           line-height: 64px,
+///                                           font-weight: 500,
+///                                           letter-spacing: 1,
+///                                        )
+///                       )
+/// 
 $typography: (
   "Nunito": (
     "button": (
@@ -15,6 +64,9 @@ $typography: (
       text-decoration: none,
       text-transform: uppercase,
     ),
-    
+/// Add a new map preset for this particular font-family
+
   ),
+
+/// Add a new map of map presets using the font-family name as key
 );

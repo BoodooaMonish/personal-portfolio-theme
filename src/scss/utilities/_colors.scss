@@ -1,3 +1,30 @@
+/// This is the colors map file used to retrieve color hex to be used across components
+
+/// $colors is a map that contains a set of maps where the key as the color name and the value is a 
+/// map containing variables of hex colors
+/// 
+/// @access public
+/// @type map
+/// @group colors
+/// 
+/// @example add a color palette to the project
+///     (
+///         'color-name': 'color-palette-sass-map'
+///     )
+///     (
+///         "red": (
+///                    '50': #hex-code,
+///                    '100': #hex-code,
+///                    '200': #hex-code,
+///                    '300': #hex-code,
+///                    '400': #hex-code,
+///                    '500': #hex-code,
+///                    '600': #hex-code,
+///                    '700': #hex-code,
+///                    '800': #hex-code,
+///                    '900': #hex-code,
+///                 )
+///     )
 $colors: (
     "gray": (
         '50': #fff,
@@ -12,4 +39,5 @@ $colors: (
         '900': #1b2028,
         
     )
+/// Add a new color palette here
 );

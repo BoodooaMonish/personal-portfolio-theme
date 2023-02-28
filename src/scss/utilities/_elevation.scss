@@ -1,22 +1,21 @@
-/* ==========================================================================
-   Elevation Variables
-   ========================================================================== */
-
-/**
- * - $elevation is a sass map where:
- *    - the keys refer to the elevation level of the surface
- *    - its respective values are its box-shadow properties
- * - each respective values, their shadow levels are represented as follows:
- *    - box-shadow: *px *px *px *px [key-shadow - umbra], 
- *      [key-shadow - penumbra], [ambient shadow];
- *
- * - USAGE EXAMPLE:
- *    - box-shadow: map.get(elevation.$elevation, '0');
- */
+/// This is a box-shadow map file containing css box-shadow values
+/// each sorted by a number (key) representing the height of elevation
+/// They are typically used for representing elevation in a component using box-shadow
 
 /// @access public
 /// @group elevation
 /// @type map
+/// @example add a new elevation properties
+///   "elevation-height-number": (
+///                               *px *px *px *px [key-shadow - umbra]
+///                               *px *px *px *px [key-shadow - penumbra]
+///                               *px *px *px *px [key-shadow - ambient shadow]
+///                              )
+///                         "0": (
+///                               0px 0px 0px 0px rgba(0, 0, 0, 0.14),
+///                               0px 0px 0px 0px rgba(0, 0, 0, 0.12),
+///                               0px 0px 0px 0px rgba(0, 0, 0, 0.2),
+///                              )
 
 $elevation: (
   "0": (
@@ -74,4 +73,5 @@ $elevation: (
     0px 9px 46px 8px rgba(0, 0, 0, 0.12),
     0px 11px 15px 0px rgba(0, 0, 0, 0.2),
   ),
+/// add new box-shadow elevation value here
 );

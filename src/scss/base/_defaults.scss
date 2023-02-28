@@ -1,26 +1,22 @@
 @use "sass:map";
 @use "../utilities/typography";
 
-/* ==========================================================================
-   Font Face
-   ========================================================================== */
+/// ADD FONT TO PROJECT USING @font-face
 
-/* nunito variable fonts */
-
+/// Note: Variable fonts are used in this project,
+/// so only a single file is fetched instead of multiple ones (regular, bold, regularItalic, ...)
 @font-face {
   font-family: "Nunito";
   font-weight: 100 900;
   font-display: block;
   src: 
   // local("Nunito"),
-    url("./fonts/Nunito-VariableFont_wght.woff2") format("woff2 supports variations"),
-    url("./fonts/Nunito-VariableFont_wght.woff2") format("woff2-variations"),
+    url("./fonts/Nunito-VariableFont_wght.woff2")
+      format("woff2 supports variations"),
+    url("./fonts/Nunito-VariableFont_wght.woff2") format("woff2-variations");
 }
 
-
-/* ==========================================================================
-   Browser Defaults
-   ========================================================================== */
+/// DEFAULT CSS VALUES AFTER CSS RESET
 
 ul {
   padding-left: 0;
@@ -39,36 +35,10 @@ a {
 html {
   color: #333;
   background-color: #fff;
-  // visibility: hidden;
-  // opacity: 0;
   scroll-behavior: smooth;
 }
-body{
-  font-family: map.get(typography.$typography-family, 'Nunito');
-}
-
-// Test Classes
-.ripple--testbox {
-  display: block;
-  width: 240px;
-  height: 160px;
-  background-color: transparent;
-  border: 1px solid black;
-}
-
-.test-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  &--row {
-    flex-direction: column;
-  }
-}
-
-.box {
-  background-color: brown;
-  height: 100px;
+body {
+  font-family: map.get(typography.$typography-family, "Nunito");
 }
 
 .is-hidden {
