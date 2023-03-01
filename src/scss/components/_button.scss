@@ -6,6 +6,44 @@
 @use "../utilities/typography";
 @use "../utilities/colors";
 
+/// HOW TO USE THE BUTTON COMPONENT SAMPLE/EXAMPLE
+/// 
+/// - There are 3 button style variants namely 'text', 'outlined', 'contained'
+///
+/// 1. Text buttons are typically used for less important actions
+/// 2. Outlined buttons are used for more emphasis than text buttons due to 
+///   the stroke
+/// 3. Contained buttons have more emphasis, as they use a color fill and 
+///   shadow. They come with 2 styles, 'unelevated' and 'raised' where the
+///   'raised' style is similar to the 'unelevated' one but with a elevation
+///   depicting shadow
+///
+/// - All button variants allows icons and svgs if available in project
+///
+/// - TEXT BUTTON:
+///     <button class="button">
+///       <span class="button__label">default</span>
+///     </button>
+///
+///
+/// - OUTLINED BUTTON:
+///     <button class="button button--outlined">
+///       <span class="button__label">default</span>
+///     </button>
+///
+///
+/// - UNELEVATED BUTTON:
+///     <button class="button button--unelevated">
+///       <span class="button__label">default</span>
+///     </button>
+///
+///
+/// - RAISED BUTTON:
+///     <button class="button button--raised">
+///       <span class="button__label">default</span>
+///     </button>
+///
+
 
 /// DEFAULT BUTTON THEME SCHEMA MAP
 /// Use this map as a template for theming the button component on a particular theme
