@@ -1,35 +1,74 @@
+/// This is a theme file the contains a theme map that will be used
+/// inside $themes scss map found inside the src/scss/_theme.scss file
+
+@use "sass:map";
+@use "../utilities/elevation";
+@use "../utilities/colors";
+
+/// Theme Map File
+/// Note: Each key-name:map  in the map needs to correspond to the name of the component and its default map
+///
+/// @type map
+/// @access public
+/// @group themify
 $dark: (
-  "button": (
-    "default-btn-padding": 0 16px 0 16px,
-    "default-btn-height": 48px,
-    "default-btn-border-radius": 4px,
-    "default-btn-icon-spacing": 8px,
-    "default-btn-color": #6c7179,
-    "default-btn-hover-color": #51565e,
-    "default-btn-focus-color": #363b43,
-    "default-btn-selected-color": #51565e,
-    "default-btn-disabled-color": #bdc2ca,
-    "default-btn-disabled-background": #f2f7ff,
-    "outlined-btn-padding": (
-      0 (1px - 16px) 0 (1px - 16px),
-    ),
-    "outlined-btn-border-width": 1px,
-    "outlined-btn-border-style": solid,
-    "outlined-btn-border-color": #6c7179,
-    "contained-btn-padding": (
-      0 16px 0 16px,
-    ),
-    "contained-btn-raised-shadow-transition": (
-      box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
-    ),
-    "contained-btn-icon-spacing": 8px,
-    "contained-btn-icon-spacing-negative": (
-      -1 * 4px,
-    ),
-    "contained-btn-background-color": #6c7179,
-    "contained-btn-color": #f2f7ff,
-    "contained-btn-hover-background": #878c94,
-    "contained-btn-focus-background": #bdc2ca,
-    "contained-btn-selected-background": #a2a7af,
-  ),
+  /// Button Component Theme Schema Map
+  "button":
+    (
+      "default-btn-font-family": "Nunito",
+      "default-btn-font-style": "button",
+      "default-btn-padding": 0 8px 0 8px,
+      "default-btn-height": 36px,
+      "default-btn-border-radius": 4px,
+      "default-btn-icon-spacing": 8px,
+      "default-btn-color": map.get(colors.$colors, "neutral", "200"),
+      "default-btn-background-color": transparent,
+      "default-btn-hover-color": map.get(colors.$colors, "neutral", "200"),
+      "default-btn-hover-background-color":
+        map.get(colors.$colors, "neutral", "800"),
+      "default-btn-focus-color": map.get(colors.$colors, "neutral", "200"),
+      "default-btn-focus-background-color":
+        map.get(colors.$colors, "neutral", "600"),
+      "default-btn-selected-color": map.get(colors.$colors, "neutral", "200"),
+      "default-btn-selected-background-color":
+        map.get(colors.$colors, "neutral", "700"),
+      "default-btn-disabled-color": map.get(colors.$colors, "neutral", "500"),
+      "default-btn-disabled-background-color":
+        map.get(colors.$colors, "neutral", "800"),
+      "default-btn-transition": (
+        background-color 50ms ease,
+      ),
+      "outlined-btn-padding": (
+        0 (1px - 16px) 0 (1px - 16px),
+      ),
+      "outlined-btn-border-width": 1px,
+      "outlined-btn-border-style": solid,
+      "outlined-btn-border-color": map.get(colors.$colors, "neutral", "600"),
+      "contained-btn-padding": (
+        0 16px 0 16px,
+      ),
+      "contained-btn-icon-spacing": 8px,
+      "contained-btn-icon-spacing-negative": (
+        -1 * 4px,
+      ),
+      "contained-btn-color": map.get(colors.$colors, "neutral", "900"),
+      "contained-btn-background-color":
+        map.get(colors.$colors, "neutral", "100"),
+      "contained-btn-hover-color": map.get(colors.$colors, "neutral", "900"),
+      "contained-btn-hover-background-color":
+        map.get(colors.$colors, "neutral", "200"),
+      "contained-btn-focus-color": map.get(colors.$colors, "neutral", "900"),
+      "contained-btn-focus-background-color":
+        map.get(colors.$colors, "neutral", "400"),
+      "contained-btn-selected-color": map.get(colors.$colors, "neutral", "800"),
+      "contained-btn-selected-background-color":
+        map.get(colors.$colors, "neutral", "300"),
+      "raised-btn-box-shadow-transition": (
+        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
+      ),
+      "raised-btn-box-shadow": map.get(elevation.$elevation, "2"),
+      "raised-btn-box-shadow-hover-focus": map.get(elevation.$elevation, "8"),
+      "raised-btn-box-shadow-active": map.get(elevation.$elevation, "8"),
+      "raised-btn-box-shadow-disabled": map.get(elevation.$elevation, "0"),
+    )
 );

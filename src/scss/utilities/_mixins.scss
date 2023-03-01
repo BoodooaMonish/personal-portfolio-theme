@@ -8,7 +8,7 @@
 /// 
 /// @access public
 /// @group global
-/// @param {map} - map containing a set of css properties with their values
+/// @param {map} $map - map containing a set of css properties with their values
 /// @example generate css properties:values from a map
 ///    css-selector {
 ///                   @include mixins.generate-map-properties($map-name);

@@ -1,2 +1,14 @@
+/// This is the main stylesheet.
+/// Everything imported here is bundled into main.css found in the src/dist
+
+/// IMPORT BASE FILES HERE
+/// 
 @use "./base/reset";
 @use "./base/defaults";
+
+/// IMPORT LAYOUT FILES HERE
+@use "./layout/grid";
+
+/// IMPORT COMPONENT FILES HERE
+
+@use "./components/button";
