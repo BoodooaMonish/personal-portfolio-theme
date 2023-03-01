@@ -1,0 +1,102 @@
+@use "sass:map";
+
+/// BREAKPOINTS
+/// 
+/// Contains 3 type of media query breakpoints
+
+
+/// BREAKPOINTS VARIABLES
+
+/// @access private
+/// @group breakpoint
+/// @type number
+$-breakpoint-desktop: 840px;
+
+/// @access private
+/// @group breakpoint
+/// @type number
+$-breakpoint-phone: 480px;
+
+
+/// BREAKPOINT MIXINS
+
+/// USAGE EXAMPLE:
+///     @include breakpoint-name {
+///        -- insert css here --
+///       }
+///
+
+/// 'deskop' mixin is used for desktops and larger screens
+/// @access public
+/// @content CSS Declarations inside are available at the desktop breakpoint
+/// @group breakpoint
+@mixin desktop {
+  @media (min-width: $-breakpoint-desktop) {
+    @content;
+  }
+}
+
+/// 'tablet' mixin is used for tablet screens
+/// @access public
+/// @content CSS Declarations inside are available at the tablet breakpoint
+/// @group breakpoint
+@mixin tablet {
+  @media (min-width: $-breakpoint-phone) and (max-width: ($-breakpoint-desktop - 1)) {
+    @content;
+  }
+}
+
+/// 'phone' mixin is used for phone screens
+/// @access public
+/// @content CSS Declarations inside are available at the phone breakpoint
+/// @group breakpoint
+@mixin phone {
+  @media (max-width: ($-breakpoint-phone - 1)) {
+    @content;
+  }
+}
+
+
+/// 'custom' mixin is used for a custom breakpoint screen range
+/// NOTE: $options should include at least one of the key/ value pairs
+/// 
+/// @access public
+/// @content CSS Declarations inside are available at the a custom set breakpoint
+/// @group breakpoint
+/// @example include a custom breakpoint
+///   @include custom((
+///     min-width: '*px',
+///     max-width: '*px'
+///     ){
+///         -- insert css here
+///      }
+/// 
+@mixin custom($options) {
+  /// if both min-width and max-width are provided, the different between the 2 values is the breakpoint range
+  @if (
+    map.has-key($options, "min-width") and map.has-key($options, "max-width")
+  ) {
+    @media (min-width: map.get($options, "min-width")) and (max-width: map.get($options, "max-width")) {
+      @content;
+    }
+  }
+  /// if only min-width is provided, the breakpoint range is the minimum value to any greater value
+  @if (
+    map.has-key($options, "min-width") and not
+      map.has-key($options, "max-width")
+  ) {
+    @media (min-width: map.get($options, "min-width")) {
+      @content;
+    }
+  }
+  /// if only max-width is provided, the breakpoint range is the maximum value to any lesser value
+  @if (
+    not
+      map.has-key($options, "min-width") and
+      map.has-key($options, "max-width")
+  ) {
+    @media (max-width: map.get($options, "max-width")) {
+      @content;
+    }
+  }
+}

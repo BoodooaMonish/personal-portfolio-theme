@@ -1,0 +1,361 @@
+@use "sass:math";
+@use "sass:map";
+@use "../utilities/breakpoints";
+
+/// THE GRID SYSTEM
+///
+/// Uses CSS Grid w/ Flexbox as Fallback
+
+///  USAGE EXAMPLE:
+///
+///  NOTE: []: optional, (): range / options available
+///
+///
+///  .grid [.grid--fluid] {
+///    .grid__row {
+///      .grid__cell [.grid__cell--order-(1-12)] [.grid__cell--span-(1-12)]
+///      [.grid__cell--span-(1-12)-(phone/tablet/desktop)]
+///      ... other cells
+///    }
+///   }
+///
+/// SAMPLE EXAMPLE:
+///      <div class="grid [grid--fluid] [(grid--align-left, grid--align-right)]">
+///        <div class="grid__row">
+///          <div class="grid__cell
+///          [ grid__cell--span-(1-12) OR [grid__cell--span-(1-12)-(desktop, tablet, phone) ] ]
+///          [ (grid__cell--align-top, grid__cell--align-middle, grid__cell--align-bottom) ]
+///          [ grid__cell--order-(1-12) ]
+///          ">
+///
+///            -- insert content here --
+///
+///          </div>
+///        </div>
+///      </div>
+///  @todo - grid__cell--order-(1-12)-(desktop, tablet, phone)
+///
+
+/// GRID VARIABLES
+
+/// NUMBER OF DEFAULT COLUMNS AT EACH BREAKPOINT
+///
+/// @access private
+/// @group grid
+/// @type map
+$grid-default-columns: (
+  "desktop": 3,
+  "tablet": 2,
+  "phone": 1,
+);
+
+/// NUMBER OF COLUMNS AT EACH BREAKPOINT
+///
+/// @access private
+/// @group grid
+/// @type map
+$grid-columns: (
+  "desktop": 12,
+  "tablet": 8,
+  "phone": 4,
+);
+
+/// SIZE OF SPACE (GUTTER) BETWEEN COLUMNS FOR EACH BREAKPOINT
+///
+/// @access private
+/// @group grid
+/// @type map
+$grid-gutter: (
+  "desktop": 24px,
+  "tablet": 16px,
+  "phone": 16px,
+);
+
+/// SIZE OF SPACE (MARGIN) LEFT-RIGHT OF EACH GRID ROW
+///
+/// @access private
+/// @group grid
+/// @type map
+$grid-margin: (
+  "desktop": 24px,
+  "tablet": 16px,
+  "phone": 16px,
+);
+
+/// MAX WIDTH OF GRID WHICH ARE NOT FULL WIDTH
+/// @access private
+/// @group grid
+/// @type number
+$-grid-max-width: 1280px;
+
+/// GRID SYSTEM MIXINS
+
+/// Grid Container Mixin
+///
+/// - wraps the whole grid
+/// - has a maximum width [can span the whole window with the addition of
+///   the 'grid--fluid' class name]
+/// - has a margin gap set as padding
+///
+/// @group grid
+/// @access public
+/// @param {number} $margin - Number containing the spacing on the outer grid
+///
+@mixin create-grid-container($margin) {
+  .grid {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: $margin;
+    max-width: $-grid-max-width;
+  }
+}
+
+/// Grid Row Mixin
+/// - create a container called '.grid__row' that wrap cells inside of the
+///   grid container named '.grid'
+/// - a margin from '$grid-margin' is set to push the border halfway to each side to allow gaps
+///   between grid cells
+///
+/// @group grid
+/// @access public
+/// @param {number} $margin - Number containing the spacing on the outer grid
+/// @param {number} $column - Number of columns needed
+///
+@mixin create-grid-row($margin, $columns) {
+  .grid__row {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: stretch;
+    margin: (math.div($margin, 2) * -1);
+    height: inherit;
+  }
+
+  @supports (display: grid) {
+    .grid__row {
+      display: grid;
+      margin: 0;
+      grid-gap: $margin;
+      grid-template-columns: repeat($columns, minmax(0, 1fr));
+    }
+  }
+}
+
+/// Grid Cells Mixin
+///
+/// - create classes of .grid__cell and .grid__cell--span-* for a particular
+///   breakpoint
+/// - each cell's width is calculated by dividing by the number of columns
+///   by the breakpoint and removing the gutter size
+/// - each cell receive a full margin of half the gutter size to provide
+///   spacing among the columns
+///
+/// @group grid
+/// @access public
+/// @param {map} - a set of options for setting the grid cell properties
+///
+@mixin create-grid-cells($options) {
+  .grid__cell {
+    width: calc(
+      #{math.div(100%, map.get($options, "default-columns"))} - #{map.get(
+          $options,
+          "gutter-size"
+        )}
+    );
+    box-sizing: border-box;
+    margin: math.div(map.get($options, "gutter-size"), 2);
+  }
+
+  @supports (display: grid) {
+    .grid__cell {
+      width: auto;
+      grid-column-end: span #{math.div(
+          map.get($options, "columns"),
+          map.get($options, "default-columns")
+        )};
+    }
+  }
+
+  @supports (display: grid) {
+    .grid__cell {
+      margin: 0;
+    }
+  }
+
+  /// - create a cell span class from 1 to $max-columns from all breakpoints
+  /// - create a cell span class from 1 to $max-columns from a specific
+  ///   breakpoint
+
+  @for $i from 1 through map.get($options, "max-columns") {
+    .grid__cell--span-#{$i},
+    .grid__cell--span-#{$i}-#{map.get($options, "breakpoint-name")} {
+      @if $i <=map.get($options, "columns") {
+        width: calc(
+          #{math.div(100%, map.get($options, "columns")) *
+            $i} -
+            #{map.get($options, "gutter-size")}
+        );
+      } @else {
+        width: calc(100% - #{map.get($options, "gutter-size")});
+      }
+    }
+
+    @supports (display: grid) {
+      @if $i <= map.get($options, "columns") {
+        .grid__cell--span-#{$i},
+        .grid__cell--span-#{$i}-#{map.get($options, "breakpoint-name")} {
+          width: auto;
+          grid-column-end: span #{$i};
+        }
+      } @else {
+        .grid__cell--span-#{$i},
+        .grid__cell--span-#{$i}-#{map.get($options, "breakpoint-name")} {
+          width: auto;
+          grid-column-end: span #{map.get($options, "columns")};
+        }
+      }
+    }
+  }
+}
+
+/// Grid Cell Order Mixin
+///
+/// @group grid
+/// @access public
+/// @param {number} - The maximum column possible to create the grid order
+/// @todo - order cells based on breakpoint settings (need a mixin for this!)
+///
+@mixin create-grid-order($max-columns) {
+  @for $i from 1 through $max-columns {
+    .grid__cell--order-#{$i} {
+      order: $i;
+    }
+  }
+}
+
+/// BUILD THE GRID SYSTEM
+
+/// Build '.grid' class name For All Breakpoints
+
+@include breakpoints.desktop {
+  @include create-grid-container(map.get($grid-margin, "desktop"));
+}
+
+@include breakpoints.tablet {
+  @include create-grid-container(map.get($grid-margin, "tablet"));
+}
+
+@include breakpoints.phone {
+  @include create-grid-container(map.get($grid-margin, "phone"));
+}
+
+/// Build '.grid__row' For All Breakpoints
+
+@include breakpoints.desktop {
+  @include create-grid-row(
+    map.get($grid-margin, "desktop"),
+    map.get($grid-columns, "desktop")
+  );
+}
+
+@include breakpoints.tablet {
+  @include create-grid-row(
+    map.get($grid-margin, "tablet"),
+    map.get($grid-columns, "tablet")
+  );
+}
+
+@include breakpoints.phone {
+  @include create-grid-row(
+    map.get($grid-margin, "phone"),
+    map.get($grid-columns, "phone")
+  );
+}
+
+/// Build '.grid__cell' For All Breakpoints
+///
+/// Also adds '.grid__cell--span-*' FOR ALL BREAKPOINTS,
+/// Also adds '.grid__cell--span-*-breakpoint-name' FOR 1 PARTICULAR BREAKPOINT
+
+@include breakpoints.desktop {
+  @include create-grid-cells(
+    (
+      "gutter-size": map.get($grid-gutter, "desktop"),
+      "default-columns": map.get($grid-default-columns, "desktop"),
+      "columns": map.get($grid-columns, "desktop"),
+      "max-columns": map.get($grid-columns, "desktop"),
+      "breakpoint-name": "desktop",
+    )
+  );
+}
+
+@include breakpoints.tablet {
+  @include create-grid-cells(
+    (
+      "gutter-size": map.get($grid-gutter, "tablet"),
+      "default-columns": map.get($grid-default-columns, "tablet"),
+      "columns": map.get($grid-columns, "tablet"),
+      "max-columns": map.get($grid-columns, "desktop"),
+      "breakpoint-name": "tablet",
+    )
+  );
+}
+
+@include breakpoints.phone {
+  @include create-grid-cells(
+    (
+      "gutter-size": map.get($grid-gutter, "phone"),
+      "default-columns": map.get($grid-default-columns, "phone"),
+      "columns": map.get($grid-columns, "phone"),
+      "max-columns": map.get($grid-columns, "desktop"),
+      "breakpoint-name": "phone",
+    )
+  );
+}
+
+/// Build '.grid__cell--order-*' For '.grid__cells'
+
+@include create-grid-order(map.get($grid-columns, "desktop"));
+
+/// Grid Cell Alignment
+
+.grid__cell--align-top {
+  align-self: flex-start;
+}
+
+@supports (display: grid) {
+  .grid__cell--align-top {
+    align-self: start;
+  }
+}
+
+.grid__cell--align-middle {
+  align-self: center;
+}
+
+.grid__cell--align-bottom {
+  align-self: flex-end;
+}
+
+@supports (display: grid) {
+  .grid__cell--align-bottom {
+    align-self: end;
+  }
+}
+
+/// Grid Alignment
+
+.grid--align-left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.grid--align-right {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/// Grid Fluidity - Full Width For '.grid'
+
+.grid--fluid {
+  max-width: none;
+}
