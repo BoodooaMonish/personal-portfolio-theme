@@ -9,3 +9,14 @@ services:
     tty: true        # docker run -t
     volumes:
       - ./:/home/app
+
+# TO CREATE THE DOCKER COMPOSE CONTAINER:
+#   - docker-compose up
+# TO DISPOSE OF THE DOCKER COMPOSE CONTAINER:
+#   - docker-compose down
+# TO START THE CREATED DOCKER COMPOSE CONTAINER:
+#   - docker-compose start
+# TO STOP THE CREATED DOCKER COMPOSE CONTAINER:
+#   - docker-compose stop
+# TO ACCESS THE CREATED DOCKER COMPOSE CONTAINER VIA BASH:
+#   - docker-compose exec node_dev_env bash
