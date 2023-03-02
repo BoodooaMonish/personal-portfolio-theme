@@ -5,7 +5,7 @@
 @use "../utilities/elevation";
 @use "../utilities/typography";
 @use "../utilities/colors";
-
+@use "../utilities/functions";
 /// HOW TO USE THE BUTTON COMPONENT SAMPLE/EXAMPLE
 /// 
 /// - There are 3 button style variants namely 'text', 'outlined', 'contained'
@@ -46,18 +46,22 @@
 
 
 /// DEFAULT BUTTON THEME SCHEMA MAP
+/// 
 /// Use this map as a template for theming the button component on a particular theme
-/// Simply add the map to the theme map in the theme file (src/scss/themes/theme-name.scss)
+/// Simply add the map to the theme map in the theme file (src/scss/themes/theme-name.scss) and
+/// change key:value where needed and remove key:value not needed for the theme version of that map
+/// 
+/// 
 /// @access public
 /// @group button
 /// @type map
 $button: (
   "default-btn-font-family": "Nunito",
-  "default-btn-font-style": "button",
-  "default-btn-padding": 0 8px 0 8px,
-  "default-btn-height": 36px,
-  "default-btn-border-radius": 4px,
-  "default-btn-icon-spacing": 8px,
+  "default-btn-font-style": "15pt-button",
+  "default-btn-padding":functions.px-to-rem(8px),
+  "default-btn-height": functions.px-to-rem(40px),
+  "default-btn-border-radius": functions.px-to-rem(4px),
+  "default-btn-icon-spacing": functions.px-to-rem(8px),
   "default-btn-color": map.get(colors.$colors, 'neutral', '900'),
   "default-btn-background-color": transparent,
   "default-btn-hover-color": map.get(colors.$colors, 'neutral', '900'),
@@ -70,17 +74,17 @@ $button: (
   "default-btn-disabled-background-color": map.get(colors.$colors, 'neutral', '200'),
   "default-btn-transition": (background-color 50ms ease),
   "outlined-btn-padding": (
-    0 (1px - 16px) 0 (1px - 16px),
+    0 (functions.px-to-rem(1px) - functions.px-to-rem(16px)) 0 (functions.px-to-rem(1px) - functions.px-to-rem(16px)),
   ),
-  "outlined-btn-border-width": 1px,
+  "outlined-btn-border-width": functions.px-to-rem(1px),
   "outlined-btn-border-style": solid,
   "outlined-btn-border-color": map.get(colors.$colors, 'neutral', '400'),
   "contained-btn-padding": (
-    0 16px 0 16px,
+    0 functions.px-to-rem(16px) 0 functions.px-to-rem(16px),
   ),
-  "contained-btn-icon-spacing": 8px,
+  "contained-btn-icon-spacing": functions.px-to-rem(8px),
   "contained-btn-icon-spacing-negative": (
-    -1 * 4px,
+    -1 * functions.px-to-rem(4px),
   ),
   "contained-btn-color": map.get(colors.$colors, 'neutral', '50'),
   "contained-btn-background-color": map.get(colors.$colors, 'neutral', '600'),
@@ -118,6 +122,8 @@ $button: (
   vertical-align: middle;
   -webkit-tap-highlight-color: transparent;
   background-color: transparent;
+  overflow: hidden;
+  white-space: nowrap;
 
   &:hover {
     cursor: pointer;
@@ -165,13 +171,14 @@ svg.button__icon {
 ///
 @mixin theme-button($button) {
   .button {
+    padding-left: map.get($button, "default-btn-padding");
+    padding-right: map.get($button, "default-btn-padding");
     @if map.get($button, "default-btn-font-family") and map.get($button, "default-btn-font-style"){
       @include mixins.create-typography-properties-only(
         map.get($button, "default-btn-font-family"),
         map.get($button, "default-btn-font-style")
       );
     }
-    padding: map.get($button, "default-btn-padding");
     height: map.get($button, "default-btn-height");
     border-radius: map.get($button, "default-btn-border-radius");
     color: map.get($button, "default-btn-color");

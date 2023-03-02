@@ -15,12 +15,6 @@ $dark: (
   /// Button Component Theme Schema Map
   "button":
     (
-      "default-btn-font-family": "Nunito",
-      "default-btn-font-style": "button",
-      "default-btn-padding": 0 8px 0 8px,
-      "default-btn-height": 36px,
-      "default-btn-border-radius": 4px,
-      "default-btn-icon-spacing": 8px,
       "default-btn-color": map.get(colors.$colors, "neutral", "200"),
       "default-btn-background-color": transparent,
       "default-btn-hover-color": map.get(colors.$colors, "neutral", "200"),
@@ -35,22 +29,7 @@ $dark: (
       "default-btn-disabled-color": map.get(colors.$colors, "neutral", "500"),
       "default-btn-disabled-background-color":
         map.get(colors.$colors, "neutral", "800"),
-      "default-btn-transition": (
-        background-color 50ms ease,
-      ),
-      "outlined-btn-padding": (
-        0 (1px - 16px) 0 (1px - 16px),
-      ),
-      "outlined-btn-border-width": 1px,
-      "outlined-btn-border-style": solid,
       "outlined-btn-border-color": map.get(colors.$colors, "neutral", "600"),
-      "contained-btn-padding": (
-        0 16px 0 16px,
-      ),
-      "contained-btn-icon-spacing": 8px,
-      "contained-btn-icon-spacing-negative": (
-        -1 * 4px,
-      ),
       "contained-btn-color": map.get(colors.$colors, "neutral", "900"),
       "contained-btn-background-color":
         map.get(colors.$colors, "neutral", "100"),
@@ -63,12 +42,5 @@ $dark: (
       "contained-btn-selected-color": map.get(colors.$colors, "neutral", "800"),
       "contained-btn-selected-background-color":
         map.get(colors.$colors, "neutral", "300"),
-      "raised-btn-box-shadow-transition": (
-        box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
-      ),
-      "raised-btn-box-shadow": map.get(elevation.$elevation, "2"),
-      "raised-btn-box-shadow-hover-focus": map.get(elevation.$elevation, "8"),
-      "raised-btn-box-shadow-active": map.get(elevation.$elevation, "8"),
-      "raised-btn-box-shadow-disabled": map.get(elevation.$elevation, "0"),
     )
 );
