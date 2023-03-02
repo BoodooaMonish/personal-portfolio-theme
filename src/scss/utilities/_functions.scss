@@ -17,6 +17,20 @@
   @return math.div($pxValue, 16px) * 1rem;
 }
 
+/// Convert 'pt' Value To 'rem' Value
+///
+/// @group global
+/// @access public
+/// @param {number} $ptValue - value in pt for rem conversion
+/// @return {number} value in rem based
+///
+/// @example convert a pt value to rem
+///     font-size: functions.pt-to-rem(12pt);
+///
+@function pt-to-rem($ptValue) {
+  @return math.div($ptValue, 16px) * 1rem;
+}
+
 /// THEMIFY FUNCTIONS
 
 /// Merge The Default Theme Component Map found in the component's file To A Themed One found in the theme's file
@@ -26,7 +40,7 @@
 /// @param {map} $default-component-style-map - the default component's theme preset found in the component's file itself
 /// @param {map} $theme-component-style-map - the themed preset of that component found in the theme file
 /// @return {map} map containing the themed preset and the default preset merged accordingly and missing keys from the default map set to null
-/// 
+///
 @function themify-component-map-merge(
   $default-component-style-map,
   $theme-component-style-map

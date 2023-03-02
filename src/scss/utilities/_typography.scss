@@ -10,30 +10,30 @@
 @use "./functions";
 
 /// $typography-family is a map that contains a series of font-family-name:font-family-preset key:value pairs
-/// 
+///
 /// @type map
 /// @access public
 /// @group typography
-/// 
+///
 /// @example add new font-family preset
 ///   (
 ///     "font-family-name": string.unquote("font-family-preset"),
 ///   )
-/// 
+///
 ///   (
 ///     "Roboto": string.unquote("Roboto, sans-serif"),
 ///   )
-/// 
+///
 $typography-family: (
   "Nunito": string.unquote("Nunito, sans-serif"),
 );
 
 /// $typography is map that contains a series of font-presets for each font-family of the project
-/// 
+///
 /// @type map
 /// @access public
 /// @group typography
-/// 
+///
 /// @example add a new preset map for a particular font-family
 ///   "font-family-name": (
 ///                         "preset-name": (
@@ -53,20 +53,105 @@ $typography-family: (
 ///                                           letter-spacing: 1,
 ///                                        )
 ///                       )
-/// 
+///
 $typography: (
   "Nunito": (
-    "button": (
-      font-size: functions.px-to-rem(14px),
-      line-height: functions.px-to-rem(36px),
-      font-weight: 500,
+    /// x-small
+    "9pt": (
+      font-size: functions.pt-to-rem(9pt),
+      line-height: functions.px-to-rem(20px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(10px),
+      padding-bottom: functions.px-to-rem(10px),
+    ),
+    "12pt": (
+      font-size: functions.pt-to-rem(12pt),
+      line-height: functions.px-to-rem(24px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(10.5px),
+      padding-bottom: functions.px-to-rem(9.5px),
+    ),
+    /// body
+    "15pt": (
+      font-size: functions.pt-to-rem(15pt),
+      line-height: functions.px-to-rem(32px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(9.25px),
+      padding-bottom: functions.px-to-rem(10.75px),
+    ),
+    "15pt-button": (
+      font-size: functions.pt-to-rem(15pt),
+      line-height: functions.px-to-rem(32px),
       letter-spacing: functions.get-letter-spacing(1.25, 14),
+      font-weight: 500,
+      // padding-top: functions.px-to-rem(9.25px),
+      // padding-bottom: functions.px-to-rem(10.75px),
       text-decoration: none,
       text-transform: uppercase,
     ),
-/// Add a new map preset for this particular font-family
-
+    "18pt": (
+      font-size: functions.pt-to-rem(18pt),
+      line-height: functions.px-to-rem(36px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(10px),
+      padding-bottom: functions.px-to-rem(10px),
+    ),
+    /// subtitles
+    "21pt": (
+      font-size: functions.pt-to-rem(21pt),
+      line-height: functions.px-to-rem(44px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(8.5px),
+      padding-bottom: functions.px-to-rem(11.5px),
+    ),
+    "24pt": (
+      font-size: functions.pt-to-rem(24pt),
+      line-height: functions.px-to-rem(48px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(9px),
+      padding-bottom: functions.px-to-rem(11px),
+    ),
+    /// subheadings
+    "30pt": (
+      font-size: functions.pt-to-rem(30pt),
+      line-height: functions.px-to-rem(48px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(10.5px),
+      padding-bottom: functions.px-to-rem(9.5px),
+    ),
+    "36pt": (
+      font-size: functions.pt-to-rem(36pt),
+      line-height: functions.px-to-rem(56px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(8px),
+      padding-bottom: functions.px-to-rem(8px),
+    ),
+    /// mainheadings
+    "48pt": (
+      font-size: functions.pt-to-rem(48pt),
+      line-height: functions.px-to-rem(80px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(10.5px),
+      padding-bottom: functions.px-to-rem(9.5px),
+    ),
+    "72pt": (
+      font-size: functions.pt-to-rem(72pt),
+      line-height: functions.px-to-rem(116px),
+      letter-spacing: 0rem,
+      font-weight: 400,
+      padding-top: functions.px-to-rem(10px),
+      padding-bottom: functions.px-to-rem(10px),
+    ),
+    /// Add a new map preset for this particular font-family
   ),
-
-/// Add a new map of map presets using the font-family name as key
+  /// Add a new map of map presets using the font-family name as key
 );
