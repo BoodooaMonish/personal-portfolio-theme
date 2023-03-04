@@ -1,0 +1,28 @@
+@use "../utilities/functions";
+
+.icon{
+    display: inherit;
+    fill: currentColor;
+}
+.icon > svg {
+  fill: currentColor;
+  display: inline-block;
+  width: functions.px-to-rem(24px);
+  height: functions.px-to-rem(24px);
+}
+.icon--18 > svg{
+  width: functions.px-to-rem(18px);
+  height: functions.px-to-rem(18px);
+}
+.icon--24 > svg{
+  width: functions.px-to-rem(24px);
+  height: functions.px-to-rem(24px);
+}
+.icon--36 > svg{
+  width: functions.px-to-rem(36px);
+  height: functions.px-to-rem(36px);
+}
+.icon--48 > svg{
+  width: functions.px-to-rem(48px);
+  height: functions.px-to-rem(48px);
+}
