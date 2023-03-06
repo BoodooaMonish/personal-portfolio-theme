@@ -12,6 +12,12 @@
 /// @access public
 /// @group themify
 $dark: (
+  /// Default Styles
+  "defaults":
+    (
+      "default-color": map.get(colors.$colors, "neutral", "50"),
+      "default-background": map.get(colors.$colors, "neutral", "900"),
+    ),
   /// Button Component Theme Schema Map
   "button":
     (

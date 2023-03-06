@@ -7,13 +7,13 @@
 @use "../utilities/colors";
 @use "../utilities/functions";
 /// HOW TO USE THE BUTTON COMPONENT SAMPLE/EXAMPLE
-/// 
+///
 /// - There are 3 button style variants namely 'text', 'outlined', 'contained'
 ///
 /// 1. Text buttons are typically used for less important actions
-/// 2. Outlined buttons are used for more emphasis than text buttons due to 
+/// 2. Outlined buttons are used for more emphasis than text buttons due to
 ///   the stroke
-/// 3. Contained buttons have more emphasis, as they use a color fill and 
+/// 3. Contained buttons have more emphasis, as they use a color fill and
 ///   shadow. They come with 2 styles, 'unelevated' and 'raised' where the
 ///   'raised' style is similar to the 'unelevated' one but with a elevation
 ///   depicting shadow
@@ -44,41 +44,47 @@
 ///     </button>
 ///
 
-
 /// DEFAULT BUTTON THEME SCHEMA MAP
-/// 
+///
 /// Use this map as a template for theming the button component on a particular theme
 /// Simply add the map to the theme map in the theme file (src/scss/themes/theme-name.scss) and
 /// change key:value where needed and remove key:value not needed for the theme version of that map
-/// 
-/// 
+///
+///
 /// @access public
 /// @group button
 /// @type map
 $button: (
   "default-btn-font-family": "Nunito",
   "default-btn-font-style": "15pt-button",
-  "default-btn-padding":functions.px-to-rem(8px),
+  "default-btn-padding": functions.px-to-rem(8px),
   "default-btn-height": functions.px-to-rem(40px),
   "default-btn-border-radius": functions.px-to-rem(4px),
   "default-btn-icon-spacing": functions.px-to-rem(8px),
-  "default-btn-color": map.get(colors.$colors, 'neutral', '900'),
+  "default-btn-color": map.get(colors.$colors, "neutral", "900"),
   "default-btn-background-color": transparent,
-  "default-btn-hover-color": map.get(colors.$colors, 'neutral', '900'),
-  "default-btn-hover-background-color": map.get(colors.$colors, 'neutral', '200'),
-  "default-btn-focus-color": map.get(colors.$colors, 'neutral', '900'),
-  "default-btn-focus-background-color": map.get(colors.$colors, 'neutral', '400'),
-  "default-btn-selected-color": map.get(colors.$colors, 'neutral', '900'),
-  "default-btn-selected-background-color": map.get(colors.$colors, 'neutral', '300'),
-  "default-btn-disabled-color": map.get(colors.$colors, 'neutral', '400'),
-  "default-btn-disabled-background-color": map.get(colors.$colors, 'neutral', '200'),
-  "default-btn-transition": (background-color 50ms ease),
+  "default-btn-hover-color": map.get(colors.$colors, "neutral", "900"),
+  "default-btn-hover-background-color":
+    map.get(colors.$colors, "neutral", "200"),
+  "default-btn-focus-color": map.get(colors.$colors, "neutral", "900"),
+  "default-btn-focus-background-color":
+    map.get(colors.$colors, "neutral", "400"),
+  "default-btn-selected-color": map.get(colors.$colors, "neutral", "900"),
+  "default-btn-selected-background-color":
+    map.get(colors.$colors, "neutral", "300"),
+  "default-btn-disabled-color": map.get(colors.$colors, "neutral", "400"),
+  "default-btn-disabled-background-color":
+    map.get(colors.$colors, "neutral", "200"),
+  "default-btn-transition": (
+    background-color 50ms ease,
+  ),
   "outlined-btn-padding": (
-    0 (functions.px-to-rem(1px) - functions.px-to-rem(16px)) 0 (functions.px-to-rem(1px) - functions.px-to-rem(16px)),
+    0 (functions.px-to-rem(1px) - functions.px-to-rem(16px)) 0
+      (functions.px-to-rem(1px) - functions.px-to-rem(16px)),
   ),
   "outlined-btn-border-width": functions.px-to-rem(1px),
   "outlined-btn-border-style": solid,
-  "outlined-btn-border-color": map.get(colors.$colors, 'neutral', '400'),
+  "outlined-btn-border-color": map.get(colors.$colors, "neutral", "400"),
   "contained-btn-padding": (
     0 functions.px-to-rem(16px) 0 functions.px-to-rem(16px),
   ),
@@ -86,14 +92,17 @@ $button: (
   "contained-btn-icon-spacing-negative": (
     -1 * functions.px-to-rem(4px),
   ),
-  "contained-btn-color": map.get(colors.$colors, 'neutral', '50'),
-  "contained-btn-background-color": map.get(colors.$colors, 'neutral', '600'),
-  "contained-btn-hover-color": map.get(colors.$colors, 'neutral', '50'),
-  "contained-btn-hover-background-color": map.get(colors.$colors, 'neutral', '700'),
-  "contained-btn-focus-color": map.get(colors.$colors, 'neutral', '50'),
-  "contained-btn-focus-background-color": map.get(colors.$colors, 'neutral', '900'),
-  "contained-btn-selected-color": map.get(colors.$colors, 'neutral', '50'),
-  "contained-btn-selected-background-color": map.get(colors.$colors, 'neutral', '800'),
+  "contained-btn-color": map.get(colors.$colors, "neutral", "50"),
+  "contained-btn-background-color": map.get(colors.$colors, "neutral", "600"),
+  "contained-btn-hover-color": map.get(colors.$colors, "neutral", "50"),
+  "contained-btn-hover-background-color":
+    map.get(colors.$colors, "neutral", "700"),
+  "contained-btn-focus-color": map.get(colors.$colors, "neutral", "50"),
+  "contained-btn-focus-background-color":
+    map.get(colors.$colors, "neutral", "900"),
+  "contained-btn-selected-color": map.get(colors.$colors, "neutral", "50"),
+  "contained-btn-selected-background-color":
+    map.get(colors.$colors, "neutral", "800"),
   "raised-btn-box-shadow-transition": (
     box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1),
   ),
@@ -104,7 +113,7 @@ $button: (
 );
 
 /// CORE BUTTON STYLES
-/// 
+///
 .button {
   box-sizing: border-box;
   position: relative;
@@ -112,9 +121,9 @@ $button: (
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  min-width: 64px;
-  margin-top: 6px;
-  margin-bottom: 6px;
+  min-width: functions.px-to-rem(64px);
+  margin-top: functions.px-to-rem(6px);
+  margin-bottom: functions.px-to-rem(6px);
   border: none;
   outline: none;
   appearance: none;
@@ -141,14 +150,21 @@ $button: (
 
   &__icon {
     margin-left: 0;
+    display: inherit;
   }
+}
+
+a.button:not([href]) {
+  background-color: transparent;
+  cursor: not-allowed;
+  pointer-events: none;
 }
 
 .button__label + .button__icon {
   margin-right: 0;
 }
 
-svg.button__icon {
+.button__icon > svg {
   fill: currentColor;
 }
 
@@ -162,9 +178,8 @@ svg.button__icon {
   margin-left: 0;
 }
 
-
 /// this mixin is used to build themable css properties of the button component
-/// 
+///
 /// @access private
 /// @group button
 /// @param $button - is a map that contain the sample schema of the default button theme map or a themed version of it
@@ -173,7 +188,9 @@ svg.button__icon {
   .button {
     padding-left: map.get($button, "default-btn-padding");
     padding-right: map.get($button, "default-btn-padding");
-    @if map.get($button, "default-btn-font-family") and map.get($button, "default-btn-font-style"){
+    @if map.get($button, "default-btn-font-family") and
+      map.get($button, "default-btn-font-style")
+    {
       @include mixins.create-typography-properties-only(
         map.get($button, "default-btn-font-family"),
         map.get($button, "default-btn-font-style")
@@ -206,6 +223,10 @@ svg.button__icon {
     }
   }
 
+  a.button:not([href]) {
+    color: map.get($button, "default-btn-disabled-color");
+  }
+
   .button__label + .button__icon {
     margin-left: map.get($button, "default-btn-icon-spacing");
   }
@@ -228,6 +249,10 @@ svg.button__icon {
     &:disabled {
       border-color: map.get($button, "default-btn-disabled-background-color");
     }
+  }
+
+  a.button--outlined:not([href]) {
+    border-color: map.get($button, "default-btn-disabled-background-color");
   }
 
   .button--raised,
@@ -265,6 +290,12 @@ svg.button__icon {
     }
   }
 
+  a.button--raised:not([href]),
+  a.button--unelevated:not([href]) {
+    background-color: map.get($button, "default-btn-disabled-background-color");
+    color: map.get($button, "default-btn-disabled-color");
+  }
+
   .button--raised {
     box-shadow: map.get($button, "raised-btn-box-shadow");
     transition: map.get($button, "raised-btn-box-shadow-transition");
@@ -278,6 +309,10 @@ svg.button__icon {
     &:disabled {
       box-shadow: map.get($button, "raised-btn-box-shadow-disabled");
     }
+  }
+
+  a.button--raised:not([href]){
+    box-shadow: map.get($button, "raised-btn-box-shadow-disabled");
   }
 
   .button--raised,
