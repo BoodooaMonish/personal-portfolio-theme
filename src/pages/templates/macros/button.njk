@@ -1,0 +1,56 @@
+{# 
+BUTTON COMPONENT MACRO
+
+Syntax:
+
+1. On top of file:
+{% import '/locationTo/button.njk' as buttons %}
+
+2. Then use macros to create button components:
+
+- To create a button:
+
+{{ buttons.button(text="Insert Sample Text", type="normal | outlined | unelevated | raised", disabled="false | true", logoName="SVG-Name*", logoPosition="left | right")}}
+
+- To create a link with button styles:
+
+{{ buttons.link(text="Insert Sample Text", type="normal | outlined | unelevated | raised", disabled="false | true", logoName="SVG-Name*", logoPosition="left | right", link="link-location")}}
+
+* Among the arguments, 'text', 'disabled', 'type' and 'href' is optional BUT 'logoName' requires 'logoPosition' in order to work
+
+* SVGName = "filename" found in "./src/pages/templates/logo/"; DO NOT ADD FILE EXTENSION; ONLY FILE NAME
+
+ #}
+
+
+{% macro button(text="button", type="normal", disabled=false, logoName=false, logoPosition="") -%}
+    <button class="button {{ "button--outlined" if type == "outlined" }}{{ "button--unelevated" if type == "unelevated" }}{{ "button--raised" if type == "raised" }}"{{ "disabled" if disabled }}>
+        {% if logName !== false and logoPosition === 'left' -%}
+            <span class="button__icon icon">
+                {% include "../logos/" + logoName + '.njk'  ignore missing %}
+            </span>
+        {%- endif %}
+        <span class="button__label">{{ text | escape }}</span>
+        {% if logoName !== false and logoPosition === 'right' -%}
+            <span class="button__icon icon">
+                {% include "../logos/" + logoName + '.njk'  ignore missing %}
+            </span>
+        {%- endif %}
+    </button>
+{%- endmacro %}
+
+{% macro link(text="", type="normal", disabled=false, logoName=false, logoPosition="", link="#") -%}
+    <a {% if disabled === false %}href="{{ link | escape }}"{% endif %} class="button {{ "button--outlined" if type == "outlined" }}{{ "button--unelevated" if type == "unelevated" }}{{ "button--raised" if type == "raised" }}">
+        {% if logName !== false and logoPosition === 'left' -%}
+            <span class="button__icon icon">
+                {% include "../logos/" + logoName + '.njk'  ignore missing %}
+            </span>
+        {%- endif %}
+        <span class="button__label">{{ text | escape }}</span>
+        {% if logoName !== false and logoPosition === 'right' -%}
+            <span class="button__icon icon">
+                {% include "../logos/" + logoName + '.njk'  ignore missing %}
+            </span>
+        {%- endif %}
+    </a>
+{%- endmacro %}

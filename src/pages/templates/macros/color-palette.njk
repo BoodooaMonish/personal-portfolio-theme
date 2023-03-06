@@ -1,0 +1,13 @@
+{% macro colors(name="", palette=false) -%}
+    {% if palette %}
+        <h4>{{name}}</h4>
+        <div class="color-palette">
+            {% for colors in palette %}
+            <div class="color-palette__color" style="background-color:{{ colors.color }}; color: {{ colors.textColor }};">
+                <span>{{colors.name}}</span>
+                <span>{{colors.color}}</span>
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endmacro -%}

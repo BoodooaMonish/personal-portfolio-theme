@@ -1,0 +1,21 @@
+.color-palette{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    &__color{
+        display: flex;
+        width: inherit;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0.5rem;
+        &:first-child{
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+}
