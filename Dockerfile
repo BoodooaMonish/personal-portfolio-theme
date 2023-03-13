@@ -1,9 +1,11 @@
 FROM node:18-buster
 
-RUN npm install --global gulp-cli
-
 WORKDIR /home/app
+
+RUN chown -R node:node /home/app
+RUN chmod 755 /home/app
 USER node
+
 ENV PORT 3000
 
 EXPOSE 3000

@@ -10,8 +10,10 @@ services:
     volumes:
       - ./:/home/app
 
-# TO CREATE THE DOCKER COMPOSE CONTAINER:
-#   - docker-compose up
+# TO CREATE AND RUN THE DOCKER COMPOSE CONTAINER:
+#   - docker-compose up -d
+# TO ONLY CREATE THE DOCKER COMPOSE CONTAINER:
+#   - docker-compose create
 # TO DISPOSE OF THE DOCKER COMPOSE CONTAINER:
 #   - docker-compose down
 # TO START THE CREATED DOCKER COMPOSE CONTAINER:
