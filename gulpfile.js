@@ -48,7 +48,11 @@ const path = {
     watch: "./src/js/**/*.js",
   },
   njk: {
-    src: ["./src/pages/**/*.njk", "!./src/pages/templates/**/*.njk"],
+    src: [
+      "./src/pages/**/*.njk",
+      "!./src/pages/templates/**/*.njk",
+      "!./src/pages/partials/**/*.njk",
+    ],
     dest: "./dist/",
     watch: "./src/pages/**/*.njk",
   },
@@ -73,7 +77,7 @@ function browserSyncServe(cb) {
     },
     open: false,
     port: 3000,
-    host: "0.0.0.0" // docker container host address, remove the "host" property if the project is ran locally
+    host: "0.0.0.0", // docker container host address, remove the "host" property if the project is ran locally
   });
   cb();
 }
@@ -140,7 +144,12 @@ function nunjucks() {
     .pipe(
       nunjucksRender({
         path: ["./src/pages/"],
-        envOptions: { autoescape: true },
+        envOptions: {
+          autoescape: true,
+          noCache: true,
+          trimBlocks: true,
+          lstripBlocks: true,
+        },
       })
     )
     .pipe(dest(path.njk.dest));
