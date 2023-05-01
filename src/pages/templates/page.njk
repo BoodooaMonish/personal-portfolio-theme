@@ -9,7 +9,15 @@
     <title>Document</title>
   </head>
   <body>
-    {% block content %}{% endblock %}
+    <header>
+    {% block navbar %}{% endblock%}
+    </header>
+    <main>
+    {% block content %}{% endblock%}
+    </main>
+    <footer>
+    {% block footer %}{% endblock%}
+    </footer>
     <script src="./bundle.js"></script>
   </body>
 </html>

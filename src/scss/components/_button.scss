@@ -56,7 +56,7 @@
 /// @type map
 $button: (
   "default-btn-font-family": "Nunito",
-  "default-btn-font-style": "15pt-button",
+  "default-btn-font-style": "xl-button",
   "default-btn-padding": functions.px-to-rem(8px),
   "default-btn-height": functions.px-to-rem(40px),
   "default-btn-border-radius": functions.px-to-rem(4px),
@@ -311,7 +311,7 @@ a.button:not([href]) {
     }
   }
 
-  a.button--raised:not([href]){
+  a.button--raised:not([href]) {
     box-shadow: map.get($button, "raised-btn-box-shadow-disabled");
   }
 
@@ -350,7 +350,7 @@ a.button:not([href]) {
   }
 }
 
-/// GENERATE THEME STYLES FOR BUTTOM COMPONENT
+/// GENERATE THEME STYLES FOR BUTTON COMPONENT
 
 /// GENERATE DEFAULT STYLES
 @include theme-button($button);

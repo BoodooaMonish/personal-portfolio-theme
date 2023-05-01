@@ -1,13 +1,25 @@
-{% macro colors(name="", palette=false) -%}
+{# 
+Call the macro:
+- palette.colors( palette=[{'name': 'Color-Number', 'color': 'HEX-value'}, {...}, {...}, ...] ) %}
+
+ #}
+
+{%- macro colors(title=false, subtitle=false, palette=false) -%}
     {% if palette %}
-        <h4>{{name}}</h4>
+        {% if title %}
+        <h5>{{title}}</h5>
+        {% endif %}
+        {% if subtitle %}
+        <p>{{subtitle}}</p>
+        {% endif %}
         <div class="color-palette">
             {% for colors in palette %}
-            <div class="color-palette__color" style="background-color:{{ colors.color }}; color: {{ colors.textColor }};">
+            <div class="color-palette__color">
+                <span class="color-palette__color__box" style="background-color:{{ colors.color }};"></span>
                 <span>{{colors.name}}</span>
-                <span>{{colors.color}}</span>
+                <span class="small">{{colors.color}}</span>
             </div>
             {% endfor %}
         </div>
     {% endif %}
-{% endmacro -%}
+{%- endmacro -%}

@@ -1,0 +1,9 @@
+{%- macro typography(type, title=false, subtitle=false, text) -%}
+{% if title %}
+<h5>{{title}}</h5>
+{% endif %}
+{% if subtitle %}
+<p>{{subtitle}}</p>
+{% endif %}
+<div class="text__{{type}}">{{text}}</div>
+{%- endmacro -%}

@@ -1,0 +1,18 @@
+{% extends "../templates/sections/twoColumnsWithTitle.njk" %}
+{% import "../templates/macros/list.njk" as list %}
+
+{% macro box() %}
+<div style="background-color:brown;height:80px;margin:8px 0px;"></div>
+{% endmacro %}
+
+{% block title %}
+<h2>Hello Grid</h2>
+{% endblock %}
+
+{% block column1 %}
+{{box()}}
+{% endblock %}
+
+{% block column2 %}
+{{box()}}
+{% endblock %}

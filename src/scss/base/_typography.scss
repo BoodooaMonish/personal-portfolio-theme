@@ -1,0 +1,152 @@
+@use "sass:map";
+@use "../utilities/breakpoints";
+@use "../utilities/mixins";
+@use "../utilities/typography";
+@use "../utilities/colors";
+@use "../theme";
+
+$typography: (
+  "heading-font-family": "Nunito",
+  "heading-font-color": map.get(colors.$colors, "neutral", "600"),
+  "heading-font-style-h1-desktop": "7xl",
+  "heading-font-style-h1-tablet": "6xl",
+  "heading-font-style-h1-phone": "5xl",
+  "heading-font-style-h2-desktop": "6xl",
+  "heading-font-style-h2-tablet": "5xl",
+  "heading-font-style-h2-phone": "4xl",
+  "heading-font-style-h3-desktop": "5xl",
+  "heading-font-style-h3-tablet": "4xl",
+  "heading-font-style-h3-phone": "3xl",
+  "heading-font-style-h4-desktop": "4xl",
+  "heading-font-style-h4-tablet": "3xl",
+  "heading-font-style-h4-phone": "2xl",
+  "heading-font-style-h5-desktop": "3xl-subtitle",
+  "heading-font-style-h5-tablet": "2xl-subtitle",
+  "heading-font-style-h5-phone": "xl-subtitle",
+  "heading-font-style-h6-desktop": "2xl-subtitle",
+  "heading-font-style-h6-tablet": "xl-subtitle",
+  "heading-font-style-h6-phone": "lg-subtitle",
+  "body-font-family": "Nunito",
+  "body-font-color": map.get(colors.$colors, "neutral", "900"),
+  "body-font-style-1-desktop": "xl",
+  "body-font-style-1-tablet": "lg",
+  "body-font-style-1-phone": "md",
+  "body-font-style-2-desktop": "md",
+  "body-font-style-2-tablet": "md",
+  "body-font-style-2-phone": "sm",
+);
+
+@mixin typography-by-breakpoint($breakpoint-name: "desktop") {
+  @if map.get($typography, "heading-font-color") {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: map.get($typography, "heading-font-color");
+    }
+  }
+  h1 {
+    @if map.get($typography, "heading-font-family") and
+      map.get($typography, "heading-font-style-h1-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "heading-font-family"),
+        map.get($typography, "heading-font-style-h1-" + $breakpoint-name)
+      );
+    }
+  }
+  h2 {
+    @if map.get($typography, "heading-font-family") and
+      map.get($typography, "heading-font-style-h2-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "heading-font-family"),
+        map.get($typography, "heading-font-style-h2-" + $breakpoint-name)
+      );
+    }
+  }
+  h3 {
+    @if map.get($typography, "heading-font-family") and
+      map.get($typography, "heading-font-style-h3-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "heading-font-family"),
+        map.get($typography, "heading-font-style-h3-" + $breakpoint-name)
+      );
+    }
+  }
+  h4 {
+    @if map.get($typography, "heading-font-family") and
+      map.get($typography, "heading-font-style-h4-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "heading-font-family"),
+        map.get($typography, "heading-font-style-h4-" + $breakpoint-name)
+      );
+    }
+  }
+  h5 {
+    @if map.get($typography, "heading-font-family") and
+      map.get($typography, "heading-font-style-h5-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "heading-font-family"),
+        map.get($typography, "heading-font-style-h5-" + $breakpoint-name)
+      );
+    }
+  }
+  h6 {
+    @if map.get($typography, "heading-font-family") and
+      map.get($typography, "heading-font-style-h6-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "heading-font-family"),
+        map.get($typography, "heading-font-style-h6-" + $breakpoint-name)
+      );
+    }
+  }
+
+  p,
+  li,
+  span,
+  div,
+  a,
+  dd {
+    @if map.get($typography, "body-font-family") and
+      map.get($typography, "body-font-style-1-" + $breakpoint-name)
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($typography, "body-font-family"),
+        map.get($typography, "body-font-style-1-" + $breakpoint-name)
+      );
+    }
+    @if map.get($typography, "body-font-color") {
+      color: map.get($typography, "body-font-color");
+    }
+  }
+}
+
+@mixin theme-typography-styles($typography) {
+  @include breakpoints.desktop {
+    @include typography-by-breakpoint("desktop");
+  }
+  @include breakpoints.tablet {
+    @include typography-by-breakpoint("tablet");
+  }
+  @include breakpoints.phone {
+    @include typography-by-breakpoint("phone");
+  }
+}
+
+/// GENERATE DEFAULT THEME STYLES
+
+/// GENERATE TYPOGRAPHY STYLES
+@include theme-typography-styles($typography);
+
+/// GENERATE THEME STYLES
+@include mixins.themify-component(theme.$themes, "typography", $typography)
+  using ($schema) {
+  @include theme-typography-styles($schema);
+}

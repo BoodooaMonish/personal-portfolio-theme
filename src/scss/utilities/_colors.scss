@@ -1,12 +1,12 @@
 /// This is the colors map file used to retrieve color hex to be used across components
 
-/// $colors is a map that contains a set of maps where the key as the color name and the value is a 
+/// $colors is a map that contains a set of maps where the key as the color name and the value is a
 /// map containing variables of hex colors
-/// 
+///
 /// @access public
 /// @type map
 /// @group colors
-/// 
+///
 /// @example add a color palette to the project
 ///     (
 ///         'color-name': 'color-palette-sass-map'
@@ -26,18 +26,29 @@
 ///                 )
 ///     )
 $colors: (
-    "neutral": (
-        '50': #fafafa,
-        '100': #f5f5f5,
-        '200': #e5e5e5,
-        '300': #d4d4d4,
-        '400': #a3a3a3,
-        '500': #737373,
-        '600': #525252,
-        '700': #404040,
-        '800': #262626,
-        '900': #171717,
-        
-    )
-/// Add a new color palette here
+  "neutral": (
+    "50": #fafafa,
+    "100": #f5f5f5,
+    "200": #e5e5e5,
+    "300": #d4d4d4,
+    "400": #a3a3a3,
+    "500": #737373,
+    "600": #525252,
+    "700": #404040,
+    "800": #262626,
+    "900": #171717,
+  ),
+  "teal": (
+    "50": #f0fdfa,
+    "100": #ccfbf1,
+    "200": #99f6e4,
+    "300": #5eead4,
+    "400": #2dd4bf,
+    "500": #14b8a6,
+    "600": #0d9488,
+    "700": #0f766e,
+    "800": #115e59,
+    "900": #134e4a,
+  )
+  /// Add a new color palette here,
 );

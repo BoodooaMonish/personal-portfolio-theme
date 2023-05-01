@@ -7,17 +7,8 @@
 /// DEFAULT STYLES SCHEMA MAP
 ///
 $defaults: (
-  'default-color': map.get(colors.$colors, "neutral", "900"),
-  'default-background': map.get(colors.$colors, "neutral", "50"),
-  "heading-font-family": "Nunito",
-  "heading-font-style-h1": "48pt-mainheading1",
-  "heading-font-style-h2": "36pt-mainheading2",
-  "heading-font-style-h3": "30pt-subheading1",
-  "heading-font-style-h4": "24pt-subheading2",
-  "heading-font-style-h5": "21pt-subtitle1",
-  "heading-font-style-h6": "18pt-subtitle2",
-  "heading-font-style-p": "15pt",
-  "heading-font-style-small": "12pt",
+  "default-color": map.get(colors.$colors, "neutral", "900"),
+  "default-background": map.get(colors.$colors, "neutral", "50"),
 );
 
 /// ADD FONT TO PROJECT USING @font-face
@@ -59,102 +50,15 @@ a {
 html {
   scroll-behavior: smooth;
 }
-body {
-  font-family: map.get(typography.$typography-family, "Nunito");
-}
 
 .is-hidden {
   visibility: hidden;
 }
 
-h1, h2{
-  text-align: center;
-}
-
 @mixin theme-default-styles($defaults) {
-  body{
+  body {
     color: map.get($defaults, "default-color");
     background-color: map.get($defaults, "default-background");
-  }
-  h1 {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-h1")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-h1")
-      );
-    }
-  }
-  h2 {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-h2")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-h2")
-      );
-    }
-  }
-  h3 {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-h3")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-h3")
-      );
-    }
-  }
-  h4 {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-h4")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-h4")
-      );
-    }
-  }
-  h5 {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-h5")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-h5")
-      );
-    }
-  }
-  h6 {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-h6")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-h6")
-      );
-    }
-  }
-  p, li, span, a {
-    @if map.get($defaults, "heading-font-family") and
-      map.get($defaults, "heading-font-style-p")
-    {
-      @include mixins.create-typography-properties-only(
-        map.get($defaults, "heading-font-family"),
-        map.get($defaults, "heading-font-style-p")
-      );
-    }
-  }
-  .small{
-    @if map.get($defaults, "heading-font-family") and
-    map.get($defaults, "heading-font-style-small")
-  {
-    @include mixins.create-typography-properties-only(
-      map.get($defaults, "heading-font-family"),
-      map.get($defaults, "heading-font-style-small")
-    );
-  }
   }
 }
 

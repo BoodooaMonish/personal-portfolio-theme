@@ -1,21 +1,24 @@
-.color-palette{
+.color-palette {
+  display: flex;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  &__color {
     display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: stretch;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
     flex-wrap: nowrap;
-    &__color{
-        display: flex;
-        width: inherit;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: row;
-        flex-wrap: wrap;
-        padding: 0.5rem;
-        &:first-child{
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-        }
+    padding: 0.5rem;
+    & > span {
+      padding-top: 0rem;
+      padding-bottom: 0rem;
     }
+    &__box {
+      width: 7rem;
+      height: 7rem;
+    }
+  }
 }

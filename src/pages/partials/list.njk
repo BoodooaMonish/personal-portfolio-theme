@@ -1,0 +1,38 @@
+{% import './macros/section.njk' as section %}
+{% import './macros/lists.njk' as list %}
+
+<article>
+    <div class="grid">
+        <h3>Lists</h3>
+    </div>
+
+    {% set title = 'Simple List' %}
+    {% set subtitle = '' %}
+    {% set content = [list.simple(["Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"])] %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set title = 'Simple List with Icon' %}
+    {% set subtitle = '' %}
+    {% set content = [list.simpleWithIcon([{"title": "Lorem ipsum dolor sit", "icon": "download", "iconPosition": "left"}, {"title": "Lorem ipsum dolor sit", "icon": "download", "iconPosition": "left"}, {"title": "Lorem ipsum dolor sit", "icon": "download", "iconPosition": "right"}, {"title": "Lorem ipsum dolor sit", "icon": "download", "iconPosition": "right"}])] %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set title = 'Description List' %}
+    {% set subtitle = '' %}
+    {% set content = [list.descriptionList([{"title": "Lorem ipsum dolor sit", "desc": "Aliquam feugiat elementum tristique. Ut semper, lacus a vulputate ornare, leo metus pretium enim, non fermentum neque lectus a dolor."}, {"title": "Lorem ipsum dolor sit", "desc": "Aliquam feugiat elementum tristique. Ut semper, lacus a vulputate ornare, leo metus pretium enim, non fermentum neque lectus a dolor."} ])] %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set title = 'Description List With Icon' %}
+    {% set subtitle = '' %}
+    {% set content = [list.descriptionListWithIcon([{"title": "Lorem ipsum dolor sit", "desc": "Aliquam feugiat elementum tristique. Ut semper, lacus a vulputate ornare, leo metus pretium enim, non fermentum neque lectus a dolor.", "icon": "download", "iconPosition": "left"}, {"title": "Lorem ipsum dolor sit", "desc": "Aliquam feugiat elementum tristique. Ut semper, lacus a vulputate ornare, leo metus pretium enim, non fermentum neque lectus a dolor.", "icon": "download", "iconPosition": "right"} ])] %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set columnOne = [list.simple(["Lorem ipsum dolor sit1", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"])] %}
+    {% set columnTwo = [list.simple(["Lorem ipsum dolor sit2", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit", "Lorem ipsum dolor sit"])] %}
+    
+    {{ section.twoEqualColumns([columnOne, columnTwo]) }}
+
+</article>

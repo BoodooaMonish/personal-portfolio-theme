@@ -1,0 +1,83 @@
+{% extends '../templates/sections/oneThirdTwoThirdsColumnsWithTitle.njk' %}
+{% import '../templates/macros/button.njk' as buttons %}
+
+
+
+{% block title %}
+<h3>Buttons</h3>
+{% endblock %}
+
+{% block column1 %}
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur accusantium, 
+amet et alias iure voluptatum nostrum, 
+corrupti reiciendis perspiciatis velit laborum rem soluta architecto! Impedit.</p>
+{% endblock %}
+
+{% block column2 %}
+<div>
+{{buttons.button(text='Click Me', type='normal')}}
+{{buttons.button(text='Click Me', type='normal', logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='normal', logoName="download", logoPosition="right")}}
+{{buttons.button(text='Click Me', type='normal', disabled=true)}}
+{{buttons.button(text='Click Me', type='normal', disabled=true, logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='normal', disabled=true, logoName="download", logoPosition="right")}}
+</div>
+
+<div>
+{{buttons.button(text='Click Me', type='outlined')}}
+{{buttons.button(text='Click Me', type='outlined', logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='outlined', logoName="download", logoPosition="right")}}
+{{buttons.button(text='Click Me', type='outlined', disabled=true)}}
+{{buttons.button(text='Click Me', type='outlined', disabled=true, logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='outlined', disabled=true, logoName="download", logoPosition="right")}}
+</div>
+
+<div>
+{{buttons.button(text='Click Me', type='unelevated')}}
+{{buttons.button(text='Click Me', type='unelevated', logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='unelevated', logoName="download", logoPosition="right")}}
+{{buttons.button(text='Click Me', type='unelevated', disabled=true)}}
+{{buttons.button(text='Click Me', type='unelevated', disabled=true, logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='unelevated', disabled=true, logoName="download", logoPosition="right")}}
+</div>
+
+<div>
+{{buttons.button(text='Click Me', type='raised')}}
+{{buttons.button(text='Click Me', type='raised', logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='raised', logoName="download", logoPosition="right")}}
+{{buttons.button(text='Click Me', type='raised', disabled=true)}}
+{{buttons.button(text='Click Me', type='raised', disabled=true, logoName="download", logoPosition="left")}}
+{{buttons.button(text='Click Me', type='raised', disabled=true, logoName="download", logoPosition="right")}}
+</div>
+
+{% endblock %}
+
+{# <article>
+    <div class="grid">
+        <h3>Buttons</h3>
+    </div>
+    {% set title = 'Normal'%}
+    {% set subtitle = 'Usually used as links'%}
+    {% set content =   %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set title = 'Outlined'%}
+    {% set subtitle = 'Used as secondary actions'%}
+    {% set content =   %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set title = 'Unelevated'%}
+    {% set subtitle = 'Used as primary actions'%}
+    {% set content =   %}
+
+    {{ section.section(title, subtitle, content) }}
+
+    {% set title = 'Raised'%}
+    {% set subtitle = 'Used as primary actions in an elevated surface'%}
+    {% set content =   %}
+
+    {{ section.section(title, subtitle, content) }}
+</article> #}
+

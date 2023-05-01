@@ -2,10 +2,11 @@
 /// Everything imported here is bundled into main.css found in the src/dist
 
 /// IMPORT BASE FILES HERE
-/// 
+///
 @use "./base/reset";
 @use "./base/defaults";
 @use "./base/icon";
+@use "./base/typography";
 
 /// IMPORT LAYOUT FILES HERE
 @use "./layout/grid";
@@ -14,3 +15,4 @@
 
 @use "./components/button";
 @use "./components/color-palette";
+@use "./components/list";

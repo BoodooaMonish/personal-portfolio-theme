@@ -1,0 +1,51 @@
+{% macro simple(items) %}
+<ul class="list">
+    {% for item in items %}
+        <li class="list__item">
+            <span class="list__item__heading">{{item}}</span>
+        </li>
+    {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro simpleWithIcon(items) %}
+<ul class="list">
+    {% for item in items %}
+        <li class="list__item">
+            <span class="list__item__heading">
+                <span class="list__item__heading__icon {{ "list__item__heading__icon--right" if item.iconPosition === "right" }} icon">
+                    {% include "../logos/" + item.icon + ".njk" ignore missing %}
+                </span>
+                {{item.title}}
+            </span>
+        </li>
+    {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro descriptionList(items) %}
+<dl class="list">
+    {% for item in items %}
+        <div class="list__item">
+            <dt class="list__item__heading">{{item.title}}</dt>
+            <dd class="list__item__desc">{{item.desc}}</dd>
+        </div>
+    {% endfor %}
+</dl>
+{% endmacro %}
+
+{% macro descriptionListWithIcon(items) %}
+<dl class="list">
+    {% for item in items %}
+        <div class="list__item">
+            <dt class="list__item__heading">
+                <span class="list__item__heading__icon {{ "list__item__heading__icon--right" if item.iconPosition === "right" }} icon">
+                    {% include "../logos/" + item.icon + ".njk" ignore missing %}
+                </span>
+                {{item.title}}
+            </dt>
+            <dd class="list__item__desc">{{item.desc}}</dd>
+        </div>
+    {% endfor %}
+</dl>
+{% endmacro %}

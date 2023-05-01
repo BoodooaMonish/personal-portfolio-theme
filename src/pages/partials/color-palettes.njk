@@ -1,0 +1,60 @@
+{% extends "../templates/sections/oneThirdTwoThirdsColumns.njk" %}
+{% import '../templates/macros/color-palette.njk' as palette %}
+
+{% block column1 %}
+<h3>Colors</h3>
+<p>There are 6 colors, namely 
+<strong>Primary</strong>, 
+<strong>Secondary</strong>, 
+<strong>Neutral</strong>, 
+<strong>Success</strong>
+<strong>Warning</strong>,
+<strong>Error</strong>. 
+Each of these color variant has 9 shades including the color itself.
+</p>
+{% endblock %}
+
+{% block column2 %}
+<section>
+{{ palette.colors( 
+title="Primary", 
+subtitle="Used for primary actions, active navigations, headings, any interface for brand color display", 
+palette=[{'name': '50', 'color': '#f0fdfa'}, {'name': '100', 'color': '#ccfbf1'}, {'name': '200', 'color': '#99f6e4'}, {'name': '300', 'color': '#5eead4'}, {'name': '400', 'color': '#2dd4bf'}, {'name': '500', 'color': '#14b8a6'}, {'name': '600', 'color': '#0d9488'}, {'name': '700', 'color': '#0f766e'}, {'name': '800', 'color': '#115e59'}, {'name': '900', 'color': '#134e4a'} ] )
+}}
+</section>
+<section>
+{{ palette.colors(
+title="Secondary",
+subtitle="Used for secondary actions, any interface needing an eye grabbing", 
+palette=[{'name': '50', 'color': '#fafafa'}, {'name': '100', 'color': '#f5f5f5'}, {'name': '200', 'color': '#e5e5e5'}, {'name': '300', 'color': '#d4d4d4'}, {'name': '400', 'color': '#a3a3a3'}, {'name': '500', 'color': '#737373'}, {'name': '600', 'color': '#525252'}, {'name': '700', 'color': '#404040'}, {'name': '800', 'color': '#262626'}, {'name': '900', 'color': '#171717'} ] )
+}}
+</section>
+<section>
+{{ palette.colors(
+title="Neutral",
+subtitle="Used for text, backgrounds, panels, form controls, any interface...", 
+palette=[{'name': '50', 'color': '#fafafa'}, {'name': '100', 'color': '#f5f5f5'}, {'name': '200', 'color': '#e5e5e5'}, {'name': '300', 'color': '#d4d4d4'}, {'name': '400', 'color': '#a3a3a3'}, {'name': '500', 'color': '#737373'}, {'name': '600', 'color': '#525252'}, {'name': '700', 'color': '#404040'}, {'name': '800', 'color': '#262626'}, {'name': '900', 'color': '#171717'} ] )
+}}
+</section>
+<section>
+{{ palette.colors(
+title="Success",
+subtitle="Used on interfaces approving messages or showing any positive outcome", 
+palette=[{'name': '50', 'color': '#f0fdf4'}, {'name': '100', 'color': '#dcfce7'}, {'name': '200', 'color': '#bbf7d0'}, {'name': '300', 'color': '#86efac'}, {'name': '400', 'color': '#4ade80'}, {'name': '500', 'color': '#22c55e'}, {'name': '600', 'color': '#16a34a'}, {'name': '700', 'color': '#15803d'}, {'name': '800', 'color': '#166534'}, {'name': '900', 'color': '#14532d'} ] )
+}}
+</section>
+<section>
+{{ palette.colors(
+title="Warning",
+subtitle="Used on interfaces displaying a warning message", 
+palette=[{'name': '50', 'color': '#fff7ed'}, {'name': '100', 'color': '#ffedd5'}, {'name': '200', 'color': '#fed7aa'}, {'name': '300', 'color': '#fdba74'}, {'name': '400', 'color': '#fb923c'}, {'name': '500', 'color': '#f97316'}, {'name': '600', 'color': '#ea580c'}, {'name': '700', 'color': '#c2410c'}, {'name': '800', 'color': '#9a3412'}, {'name': '900', 'color': '#7c2d12'} ] )
+}}
+</section>
+<section>
+{{ palette.colors(
+title="Error",
+subtitle="Used on any interface needing an error or destrutive states", 
+palette=[{'name': '50', 'color': '#fef2f2'}, {'name': '100', 'color': '#fee2e2'}, {'name': '200', 'color': '#fecaca'}, {'name': '300', 'color': '#fca5a5'}, {'name': '400', 'color': '#f87171'}, {'name': '500', 'color': '#ef4444'}, {'name': '600', 'color': '#dc2626'}, {'name': '700', 'color': '#b91c1c'}, {'name': '800', 'color': '#991b1b'}, {'name': '900', 'color': '#7f1d1d'} ] )
+}}
+</section>
+{% endblock %}

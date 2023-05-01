@@ -1,0 +1,239 @@
+@use "sass:map";
+@use "sass:math";
+@use "../theme";
+@use "../utilities/mixins";
+@use "../utilities/typography";
+@use "../utilities/colors";
+
+/// HOW TO USE THE LIST COMPONENT SAMPLE/EXAMPLE
+///
+/// 1. Simple List with optional icon on heading
+/// <ul class="list">
+///   <li class="list__item">
+///     <span class="list__item__heading">
+///         <span class="list__item__heading__icon [list__item__heading__icon--right] icon">
+///             [svg icon]
+///         </span>
+///         [text or any tag]
+///     </span>
+///   </li>
+///
+///   [insert more <li> tags here...]
+///
+/// </ul>
+///
+/// 2. Descriptive List headings with its description and the optional icon on the heading
+/// <dl class="list">
+///   <div class="list__item">
+///       <dt class="list__item__heading">
+///           <span class="list__item__heading__icon [list__item__heading__icon--right] icon">
+///               [svg icon]
+///           </span>
+///           [text or any tag]
+///       </dt>
+///       <dd class="list__item__desc">[text or any tag]</dd>
+///   </div>
+///
+///   [[insert more .list__item here...]]
+///
+/// </dl>
+
+/// DEFAULT LIST THEME SCHEMA MAP
+///
+/// Use this map as a template for theming the list component on a particular theme
+/// Simply add the map to the theme map in the theme file (src/scss/themes/theme-name.scss) and
+/// change key:value where needed and remove key:value not needed for the theme version of that map
+///
+///
+/// @access public
+/// @group list
+/// @type map
+$list: (
+  "list-padding": 1rem,
+  "list-decorator-spacing": 2rem,
+  "list-decorator-width": 0.5rem,
+  "list-decorator-color": map.get(colors.$colors, "neutral", "700"),
+  "list-decorator-border-radius": 0.25rem,
+  "list-decorator-point-size": 2.5rem,
+  "list-decorator-point-border-color": map.get(colors.$colors, "neutral", "50"),
+  "list-descriptive-heading-font-family": "Nunito",
+  "list-descriptive-heading-font-style": "xl",
+  "list-heading-icon-spacing": 0.5rem,
+);
+
+/// Core List Styles
+///
+
+.list {
+  position: relative;
+  box-sizing: border-box;
+  width: inherit;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  &::before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+  &__item {
+    width: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    &__heading {
+      position: relative;
+      display: inline-flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: nowrap;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        border-radius: 50%;
+        transform: translateY(-50%);
+      }
+      &__icon {
+        &--right {
+          order: 2;
+          margin-right: unset;
+        }
+      }
+    }
+  }
+}
+
+[dir="rtl"] .list,
+.list[dir="rtl"] {
+  &::before {
+    left: unset;
+    right: 0;
+  }
+}
+
+[dir="rtl"] .list__item,
+.list__item[dir="rtl"] {
+  & .list__item__heading {
+    &:before {
+      left: unset;
+    }
+  }
+}
+
+[dir="rtl"] .list__item__heading__icon,
+.list__item__heading__icon[dir="rtl"] {
+  margin-right: unset;
+}
+
+[dir="rtl"] .list__item__heading__icon.list__item__heading__icon--right,
+.list__item__heading__icon.list__item__heading__icon--right[dir="rtl"] {
+  margin-left: unset;
+}
+
+/// this mixin is used to build themable css properties of the list component
+///
+/// @access private
+/// @group list
+/// @param $list - is a map that contain the sample schema of the default list theme map or a themed version of it
+///
+@mixin theme-list($list) {
+  .list {
+    padding: map.get($list, "list-padding");
+    padding-left: map.get($list, "list-decorator-spacing");
+    &::before {
+      width: map.get($list, "list-decorator-width");
+      background-color: map.get($list, "list-decorator-color");
+      border-radius: map.get($list, "list-decorator-border-radius");
+    }
+    &__item__heading {
+      &::before {
+        left: -1 *
+          (
+            map.get($list, "list-decorator-spacing") +
+              math.div(
+                (
+                  map.get($list, "list-decorator-width") +
+                    map.get($list, "list-decorator-point-size")
+                ),
+                2
+              ) - map.get($list, "list-decorator-width")
+          );
+        width: map.get($list, "list-decorator-point-size");
+        height: map.get($list, "list-decorator-point-size");
+        background-color: map.get($list, "list-decorator-color");
+        border: map.get($list, "list-decorator-width") solid
+          map.get($list, "list-decorator-point-border-color");
+      }
+      &__icon {
+        margin-right: map.get($list, "list-heading-icon-spacing");
+        &--right {
+          margin-left: map.get($list, "list-heading-icon-spacing");
+        }
+      }
+    }
+  }
+
+  dt.list__item__heading {
+    @if map.get($list, "list-descriptive-heading-font-family") and
+      map.get($list, "list-descriptive-heading-font-style")
+    {
+      @include mixins.create-typography-properties-only(
+        map.get($list, "list-descriptive-heading-font-family"),
+        map.get($list, "list-descriptive-heading-font-style")
+      );
+    }
+  }
+
+  [dir="rtl"] .list,
+  .list[dir="rtl"] {
+    padding-left: map.get($list, "list-padding");
+    padding-right: map.get($list, "list-decorator-spacing");
+  }
+
+  [dir="rtl"] .list__item,
+  .list__item[dir="rtl"] {
+    & .list__item__heading {
+      &:before {
+        right: -1 *
+          (
+            map.get($list, "list-decorator-spacing") +
+              math.div(
+                (
+                  map.get($list, "list-decorator-width") +
+                    map.get($list, "list-decorator-point-size")
+                ),
+                2
+              ) - map.get($list, "list-decorator-width")
+          );
+      }
+    }
+  }
+
+  [dir="rtl"] .list__item__heading__icon,
+  .list__item__heading__icon[dir="rtl"] {
+    margin-left: map.get($list, "list-heading-icon-spacing");
+  }
+
+  [dir="rtl"] .list__item__heading__icon.list__item__heading__icon--right,
+  .list__item__heading__icon.list__item__heading__icon--right[dir="rtl"] {
+    margin-right: map.get($list, "list-heading-icon-spacing");
+  }
+}
+
+/// GENERATE THEME STYLES FOR LIST COMPONENT
+
+/// GENERATE DEFAULT STYLES
+@include theme-list($list);
+
+/// GENERATE THEME STYLES
+@include mixins.themify-component(theme.$themes, "list", $list) using ($schema) {
+  @include theme-list($schema);
+}
